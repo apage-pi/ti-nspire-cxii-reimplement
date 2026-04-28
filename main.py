@@ -51,6 +51,20 @@ class GraphFrame(CTkFrame):
         plt.ylabel("y")
         plt.show()
 
+class EquationFrame(CTkFrame):
+    def __init__(self, master):
+        super().__init__(master)
+        self.grid_coulumnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+        self.PreviousEquation = CTKTextbox(self, wrap="none")
+        self.PreviousEquation.configure(state="disabled")
+        self.PreviousEquation.grid(row=0, column=0, columnspan=2, padx=10, pady=10, sticky="nwe")
+        self.EquationEntry = CTKTextbox(self, wrap="none")
+        self.EquationEntry.grid(row=2, column=0, padx=10, pady=10, sticky="sw")
+        self.EquationSend = CTKButton(self, text="Enter", command=lambda: print(self.EquationEntry.get()))
+        self.EquationSend.grid(row=2, column=1, padx=10, pady=10)
+
+
 
 class App(CTk):
     def __init__(self):
